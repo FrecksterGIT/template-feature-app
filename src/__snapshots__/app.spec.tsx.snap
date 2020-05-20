@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`output contains one entry point 1`] = `
+<h1>
+  Demo-Entry #1
+</h1>
+`;
