@@ -17,7 +17,8 @@
     "lint": "eslint \"src/**/*.{ts,tsx}\"",
     "release": "standard-version",
     "release:test": "npm run build && npm pack",
-    "test": "jest --coverage"
+    "test": "jest --coverage",
+    "test:refresh": "jest --coverage --updateSnapshot"
   },
   "author": "",
   "license": "ISC",
@@ -36,6 +37,7 @@
     "@commitlint/config-conventional": "^8.3.4",
     "@das-buro-am-draht/feature-app-demo-integrator": "^0.0.2",
     "@types/jest": "^25.2.3",
+    "@types/react-test-renderer": "^16.9.2",
     "@typescript-eslint/eslint-plugin": "^2.34.0",
     "@typescript-eslint/parser": "^2.34.0",
     "copy-webpack-plugin": "^6.0.1",
@@ -47,6 +49,7 @@
     "husky": "^4.2.5",
     "jest": "^26.0.1",
     "lint-staged": "^10.2.4",
+    "react-test-renderer": "^16.13.1",
     "rimraf": "^3.0.2",
     "standard-version": "^8.0.0",
     "ts-jest": "^26.0.0",
