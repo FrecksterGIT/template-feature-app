@@ -3,7 +3,7 @@ import * as React from 'react';
 import {FeatureAppDefinition, FeatureServices} from '@feature-hub/core';
 import {ReactFeatureApp} from '@feature-hub/react';
 
-import {Entry} from './components/Entry';
+import {Entry} from './components/entry';
 
 interface Dependencies extends FeatureServices {
 }

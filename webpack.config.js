@@ -4,12 +4,19 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 const path = require('path');
 
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const demo = require('@das-buro-am-draht/feature-app-demo-integrator/webpack');
 
 const demoConfig = env => demo({
   env,
   srcdir: path.resolve('./src'),
   outdir: path.resolve('./dist'),
+  copyPatterns: [
+    {
+      from: 'node_modules/@das-buro-am-draht/audi-core-css/dist/',
+      to: 'audi-core-css/',
+    },
+  ],
 });
 
 const umdConfig = env => ({
@@ -38,11 +45,16 @@ const umdConfig = env => ({
     'styled-components': 'styled-components',
     '@feature-hub/react': '@feature-hub/react',
   },
+  plugins: [new MiniCssExtractPlugin()],
   module: {
     rules: [
       {
         test: /\.tsx?$/,
         loader: 'ts-loader',
+      },
+      {
+        test: /\.css$/i,
+        use: [MiniCssExtractPlugin.loader, 'css-loader'],
       },
     ],
   },
