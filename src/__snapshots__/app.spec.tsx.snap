@@ -1,7 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`output contains one entry point 1`] = `
-<h1>
+<h3
+  className="audi-headline-order-3 headline"
+>
   Demo-Entry #1
-</h1>
+</h3>
 `;

@@ -6,7 +6,7 @@ import * as React from 'react';
 import * as TestRenderer from 'react-test-renderer';
 
 import featureAppDefinition from './app';
-import {Entry} from './components/Entry';
+import {Entry} from './components/entry';
 
 test('output contains one entry point', () => {
   const featureApp = featureAppDefinition.create(undefined);
