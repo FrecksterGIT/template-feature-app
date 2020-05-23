@@ -76,7 +76,7 @@ jobs:
         run: |
           npm publish
 
-      -name: Create Release Asset
+      - name: Create Release Asset
           cp package.json dist/
           zip -r dist.zip dist
 
