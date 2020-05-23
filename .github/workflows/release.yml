@@ -52,30 +52,33 @@ jobs:
             ${{ runner.OS }}-node-
             ${{ runner.OS }}-
 
-      - name: install dependencies
+      - name: Install Dependencies
         run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
           echo "//npm.pkg.github.com/:_authToken=${{ secrets.TECH_USER_AUTH_TOKEN }}" >> ~/.npmrc
           npm ci
           echo "//npm.pkg.github.com/:_authToken=${{ secrets.GITHUB_TOKEN }}" >> ~/.npmrc
 
-      - name: tag new version
+      - name: Tag Version
         run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "GitHub Action"
           npm run release
           git push --follow-tags
           export LAST_TAG=$(git describe --abbrev=0)
           echo "::set-env name=EXPORT_TAG_NAME::${LAST_TAG}"
-
-      - name: build
-        run: |
           echo ::set-env name=REPOSITORY_NAME::$(echo "$GITHUB_REPOSITORY" | awk -F / '{print $2}' | sed -e "s/:refs//")
+
+      - name: Build
+        run: |
           npm run build
 
-      - name: publish new package
+      - name: Publish npm Package
         run: |
           npm publish
-          zip -r dist.zip dist/ package.json
+
+      -name: Create Release Asset
+          cp package.json dist/
+          zip -r dist.zip dist
 
       - name: Create Release
         id: create_release
@@ -109,3 +112,12 @@ jobs:
           git pull
           git rebase master
           git push --force
+
+      - name: Push to FeatureApp Marketplace
+        run: |
+          export RELEASE_ID=${{ steps.create_release.outputs.id }}
+          echo $RELEASE_ID
+          curl -s --location --request POST 'https://api.featureapps.audi.com/alpha/submissions' \
+            --header 'x-api-key:  ${{ secrets.MARKETPLACE_APIKEY }} ' \
+            --header 'Content-Type: application/json' \
+            --data-raw '{"repository": "${{ github.repository }}","owner": "${{ github.repository_owner }}","releaseId": ${{ steps.create_release.outputs.id }}}'
