@@ -1,6 +1,6 @@
 {
   "name": "@freckstergit/template-feature-app",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "",
   "main": "dist/app.commonjs.js",
   "types": "dist/app.d.ts",
