@@ -72,6 +72,8 @@ const moduleConfig = (env) => ({
   output: {
     filename: 'app.commonjs.js',
     path: path.resolve(__dirname, './dist'),
+    libraryTarget: 'commonjs2',
+    publicPath: '/',
   },
   target: 'node',
 });
