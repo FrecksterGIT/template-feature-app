@@ -8,7 +8,10 @@ import {Entry} from './components/entry';
 interface Dependencies extends FeatureServices {
 }
 
-const featureAppDefinition: FeatureAppDefinition<ReactFeatureApp, Dependencies, string> = {
+export interface TemplateFeatureAppConfig {
+}
+
+const templateFeatureAppDefinition: FeatureAppDefinition<ReactFeatureApp, Dependencies, TemplateFeatureAppConfig> = {
   create: () => {
     return {
       // disable eslint rule because this is a (Feature Hub) React Feature App that doesn't define a `displayName` attribute
@@ -25,4 +28,4 @@ const featureAppDefinition: FeatureAppDefinition<ReactFeatureApp, Dependencies, 
   },
 };
 
-export default featureAppDefinition;
+export default templateFeatureAppDefinition;

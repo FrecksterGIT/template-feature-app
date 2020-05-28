@@ -5,11 +5,11 @@ import * as React from 'react';
 
 import * as TestRenderer from 'react-test-renderer';
 
-import featureAppDefinition from './app';
+import templateFeatureAppDefinition from './app';
 import {Entry} from './components/entry';
 
 test('output contains one entry point', () => {
-  const featureApp = featureAppDefinition.create(undefined);
+  const featureApp = templateFeatureAppDefinition.create(undefined);
   const rendered = TestRenderer.create(<>{featureApp.render()}</>);
 
   const instance = rendered.root;
