@@ -11,12 +11,6 @@ const demoConfig = env => demo({
   env,
   srcdir: path.resolve('./src'),
   outdir: path.resolve('./dist'),
-  copyPatterns: [
-    {
-      from: 'node_modules/@das-buro-am-draht/audi-core-css/dist/',
-      to: 'audi-core-css/',
-    },
-  ],
 });
 
 const umdConfig = env => ({
