@@ -12,9 +12,9 @@
     "url": "git+https://github.com/freckstergit/template-feature-app.git"
   },
   "scripts": {
-    "build": "rimraf dist && npm run copy:assets && webpack --mode production",
-    "copy:assets": "rimraf ./assets && ncp \"./node_modules/@das-buro-am-draht/audi-core-css/dist/\" \"./assets/\"",
+    "build": "rimraf dist && webpack --mode production",
     "develop": "rimraf dist && npm run copy:assets && webpack-dev-server --mode development",
+    "copy:assets": "rimraf ./assets && ncp \"./node_modules/@das-buro-am-draht/audi-core-css/dist/export/\" \"./assets/\"",
     "lint": "eslint \"src/**/*.{ts,tsx}\" && stylelint \"src/**/*.css\"",
     "postbuild": "dts-bundle-generator -o ./dist/app.d.ts ./src/app.tsx",
     "release": "standard-version",
